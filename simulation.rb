@@ -36,7 +36,7 @@ class Simulation
     @data = []
 
     self.time_stamp = 0
-    current_velocity = 0
+    self.current_velocity = 0.0
     self.max_velocity = 0
     self.altitude = 0
     self.time_step = 0.05
@@ -46,11 +46,11 @@ class Simulation
    log
    velocity_at_instant(rocket,motor)
 
-   while self.current_velocity > 0
+   while self.current_velocity > 0 || @data.count < 10
      velocity_at_instant(rocket,motor)
    end
 
-   Formatador.display_table(@data,[:time_stamp, :altitude, :velocity, :motor_force,:mass])
+   Formatador.display_table(@data,[:time_stamp, :altitude, :velocity,:acceleration, :motor_force,:mass])
 
    coast_time = @data.last[:time_stamp] - @motor.burn_time
 
@@ -65,18 +65,22 @@ class Simulation
     self.total_mass = rocket.effective_mass(self.time_stamp)
     self.time_stamp += time_step
 
-    self.altitude, self.current_velocity = rk4(self.current_velocity, self.altitude, time_step)
+    self.altitude, self.current_velocity, self.accelleration = rk4(self.current_velocity, self.altitude, time_step)
+
     if self.current_velocity < 0
-      vel_distance = @data.last[:velocity] + -1*self.current_velocity
-      pct = (1.0 - -1*self.current_velocity/vel_distance)
-      alt_distance = self.altitude - @data.last[:altitude]
-      new_altitude = alt_distance*pct + @data.last[:altitude]
-      puts "interpolated altitude #{new_altitude}"
-      self.altitude = new_altitude
-      self.current_velocity = 0
+      interpolate_apogee_value
     end
     log
     check_max_velocity(current_velocity)
+  end
+
+  def interpolate_apogee_value
+    vel_distance          = @data.last[:velocity] + -1*self.current_velocity
+    pct                   = (1.0 - -1*self.current_velocity/vel_distance)
+    alt_distance          = self.altitude - @data.last[:altitude]
+    new_altitude          = alt_distance*pct + @data.last[:altitude]
+    self.altitude         = new_altitude
+    self.current_velocity = 0
   end
 
   def rk4(velocity,altitude, dt)
@@ -89,8 +93,9 @@ class Simulation
     k4 = dt*altitude_derivative_at_n(velocity+l3)
     l4 = dt*velocity_derivative_at_n(velocity+l3,rocket)
     altitude_n = altitude+1.0/6.0*(k1+2.00*k2+2.00*k3+k4)
-    velocity_n = velocity+1.00/6.00*(l1+2.00*l2+2.00*l3+l4)
-    [altitude_n,velocity_n]
+    velocity_n = velocity+1.0/6.0*(l1+2.00*l2+2.00*l3+l4)
+    acceleration_n = velocity_derivative_at_n(velocity_n,rocket)/9.8
+    [altitude_n,velocity_n,acceleration_n]
   end
 
   def velocity_derivative_at_n(velocity,rocket)
@@ -123,12 +128,12 @@ class Simulation
   end
 
   def log
-    @data << {:time_stamp => time_stamp, :motor_force => motor_force, :altitude => altitude, :velocity => current_velocity, :mass => total_mass}
+    @data << {:time_stamp => time_stamp, :motor_force => motor_force, :altitude => altitude, :velocity => current_velocity, :mass => total_mass, :acceleration =>accelleration}
   end
 
 end
 
 sim = Simulation.new
-sim.execute("alpha", "C6")
+sim.execute("mx774", "A8")
 
 

@@ -47,10 +47,20 @@ class Repository
                                      :max_body_tube_diameter_mm => 24.8,
                                      :drag_coefficient => 0.7)
 
+    @rockets["astron"] = Rocket.new(:name                      => "astron",
+                                   :empty_weight_g            => 43,
+                                   :max_body_tube_diameter_mm => 23.0,
+                                   :drag_coefficient          => 0.75)
+
     @rockets["alphaIII"] = Rocket.new(:name                      => "alphaIII",
                                       :empty_weight_g            => 29.0,
                                       :max_body_tube_diameter_mm => 24.8,
                                       :drag_coefficient          => 0.6)
+
+    @rockets["mx774"] = Rocket.new(:name                      => "mx774",
+                                      :empty_weight_g            => 84.0,
+                                      :max_body_tube_diameter_mm => 39.12,
+                                      :drag_coefficient          => 0.78)
 
   end
 
