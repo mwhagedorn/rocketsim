@@ -42,7 +42,7 @@
       <file leaf-file-name="pocket_rocket.gemspec" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pocket_rocket.gemspec">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="33" selection-start="244" selection-end="244" vertical-scroll-proportion="0.13520633" vertical-offset="0" max-vertical-offset="1139">
+            <state line="6" column="27" selection-start="208" selection-end="208" vertical-scroll-proportion="0.115891136" vertical-offset="0" max-vertical-offset="1139">
               <folding />
             </state>
           </provider>
@@ -152,8 +152,8 @@
         <option value="$PROJECT_DIR$/lib/pocket_rocket/wrasp_parser.rb" />
         <option value="$PROJECT_DIR$/lib/pocket_rocket/repository.rb" />
         <option value="$PROJECT_DIR$/lib/pocket_rocket/app.rb" />
-        <option value="$PROJECT_DIR$/pocket_rocket.gemspec" />
         <option value="$PROJECT_DIR$/lib/pocket_rocket/version.rb" />
+        <option value="$PROJECT_DIR$/pocket_rocket.gemspec" />
       </list>
     </option>
   </component>
@@ -547,7 +547,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14719272" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14719272" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3504713" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -904,7 +904,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pocket_rocket.gemspec">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="33" selection-start="244" selection-end="244" vertical-scroll-proportion="0.13520633" vertical-offset="0" max-vertical-offset="1139">
+        <state line="6" column="27" selection-start="208" selection-end="208" vertical-scroll-proportion="0.115891136" vertical-offset="0" max-vertical-offset="1139">
           <folding />
         </state>
       </provider>
