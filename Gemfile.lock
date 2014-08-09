@@ -1,0 +1,21 @@
+PATH
+  remote: .
+  specs:
+    pocket_rocket (0.0.1)
+      interpolate
+      thor
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    interpolate (0.3.0)
+    rake (10.3.2)
+    thor (0.19.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.5)
+  pocket_rocket!
+  rake
