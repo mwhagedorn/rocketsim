@@ -224,7 +224,5 @@ module PocketRocket
   end
 end
 
-sim = PocketRocket::Simulation.new
-sim.execute("alphaIII", "C6")
 
 

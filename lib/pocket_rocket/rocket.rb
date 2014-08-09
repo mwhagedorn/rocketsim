@@ -24,6 +24,16 @@ module PocketRocket
     mass + engine.mass_at_time(time)
   end
 
+  def inspect
+
+    display = {}
+    VALID_KEYS.each do |key|
+      display[key] = self.send(key)
+    end
+    Formatador.display_table([display], VALID_KEYS)
+
+  end
+
   private
 
     def radius
