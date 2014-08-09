@@ -10,7 +10,7 @@ module PocketRocket
       say @repo.rockets
     end
 
-    desc "list_engines", "list rockets in the repo"
+    desc "list_engines", "list engines in the repo"
     def list_rockets
       @repo = Repository.new
       say @repo.codes
