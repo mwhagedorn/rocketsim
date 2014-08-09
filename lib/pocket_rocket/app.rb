@@ -1,8 +1,4 @@
 require "thor"
-require "fog"
-require "fog/hp"
-
-Excon.defaults[:ssl_verify_peer] = false
 
 module PocketRocket
   class App < Thor

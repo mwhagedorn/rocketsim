@@ -5,7 +5,7 @@ require 'helion/version'
 
 Gem::Specification.new do |spec|
   spec.name        = "pocket_rocket"
-  spec.version     = Helion::VERSION
+  spec.version     = PocketRocket::VERSION
   spec.authors     = ["Mike Hagedorn"]
   spec.email       = ["mike@silverchairsolutions.com"]
   spec.summary     = %q{Simple command line utility for calculating rocket altitudes}
@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency("interpolate")
   spec.add_dependency("thor")
+  spec.add_dependency("formatador")
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
