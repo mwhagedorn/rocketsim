@@ -2,6 +2,8 @@ require "thor"
 
 module PocketRocket
   class App < Thor
+    include Thor::Actions
+
     desc "list_rockets", "list rockets in the repo"
     def list_rockets
       @repo = Repository.new
