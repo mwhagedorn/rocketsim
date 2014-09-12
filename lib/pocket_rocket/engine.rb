@@ -38,6 +38,7 @@ module PocketRocket
 
     def thrust_curve=(data)
       @data = Interpolate::Points.new(data)
+      @data.merge{[0.0,0.0]}
     end
 
     def burn_time

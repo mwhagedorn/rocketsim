@@ -6,6 +6,10 @@ require "interpolate"
 module PocketRocket
   class Simulation
 
+    RHO = 1.2505
+    PI = Math::PI
+    GRAV = 9.80665
+
     VALID_KEYS = [
       :time_stamp,
       :altitude,
@@ -19,7 +23,11 @@ module PocketRocket
       :current_velocity,
       :rocket,
       :motor,
-      :motor_force
+      :motor_force,
+      :drag_constant,
+      :rho,
+      :pi,
+      :grav
     ]
 
     attr_accessor(*VALID_KEYS)
@@ -30,6 +38,9 @@ module PocketRocket
       self.time_stamp       = 0
       self.current_velocity = 0
       self.altitude         = 0
+      self.rho = RHO
+      self.pi = PI
+      self.grav = GRAV
     end
 
     def execute(rocket_name, engine_code)
@@ -44,14 +55,15 @@ module PocketRocket
       self.max_velocity     = 0
       self.max_acceleration = 0
       self.altitude         = 0
-      self.time_step        = 0.05
+      self.time_step        = 0.005
       self.velocity         = 0
       self.total_mass       = rocket.effective_mass(self.time_stamp)
       self.motor_force      = 0
+      self.drag_constant =  (0.5*self.rho*@rocket.drag_coefficient*self.pi/4)*((@rocket.max_body_tube_diameter_mm*0.001)**2.0)
       log
       velocity_at_instant(rocket, motor)
 
-      while self.current_velocity > 0 || @data.count < 10
+      while self.current_velocity > 0 || self.time_stamp < burn_time
         velocity_at_instant(rocket, motor)
       end
 
@@ -83,7 +95,7 @@ module PocketRocket
                         :max_safe_wind => (velocity_at_end_of_launch_rod*3.28/5.0).round}]
 
       Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time, :max_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind])
-
+    #puts self.ave_accell
     end
 
     def apogee
@@ -152,6 +164,12 @@ module PocketRocket
       curve_for(:accelleration)
     end
 
+    def ave_accell
+      data = accelleration_curve.collect{|item| item[1]}
+      data.inject(0.0){|sum,e1| sum+e1}/data.size
+
+    end
+
     def curve_for(item)
       vc = []
       @data.each do |data_point|
@@ -180,16 +198,13 @@ module PocketRocket
       altitude_n     = altitude+1.0/6.0*(k1+2.00*k2+2.00*k3+k4)
       velocity_n     = velocity+1.0/6.0*(l1+2.00*l2+2.00*l3+l4)
       acceleration_n = velocity_derivative_at_n(velocity_n, rocket)/9.8
+      puts
       [altitude_n, velocity_n, acceleration_n]
     end
 
     def velocity_derivative_at_n(velocity, rocket)
-      gravity    = 9.81001
-      pi         = 3.14159
-      rho        = 1.2062
-      area       = pi*(rocket.max_body_tube_diameter_mm/2*0.001)**2
-      drag_force = 0.5*rho*rocket.drag_coefficient*area*(velocity**2)
-      (self.motor_force-self.total_mass*gravity-drag_force)/self.total_mass
+      drag_force = self.drag_constant*(velocity**2)
+      (self.motor_force-self.total_mass*self.grav-drag_force)/self.total_mass
     end
 
     def altitude_derivative_at_n(velocity)

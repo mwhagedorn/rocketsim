@@ -49,7 +49,22 @@ module PocketRocket
       @rockets["mx774"] = Rocket.new(:name                      => "mx774",
                                      :empty_weight_g            => 84.0,
                                      :max_body_tube_diameter_mm => 46.0,
-                                     :drag_coefficient          => 1.5)
+                                     :drag_coefficient          => 0.9)
+
+      @rockets["dragonite"] = Rocket.new(:name                      => "dragonite",
+                                         :empty_weight_g            => 51.0,
+                                         :max_body_tube_diameter_mm => 28,
+                                         :drag_coefficient          => 0.8)
+      @rockets["astra"] = Rocket.new(:name                      => "astra",
+                                         :empty_weight_g            => 23.0,
+                                         :max_body_tube_diameter_mm => 25,
+                                         :drag_coefficient          => 0.8)
+
+      @rockets["red_max"] = Rocket.new(:name                      => "red_max",
+                                     :empty_weight_g            => 68.0,
+                                     :max_body_tube_diameter_mm => 42,
+                                     :drag_coefficient          => 0.8)
+
 
     end
 
@@ -73,4 +88,3 @@ module PocketRocket
   end
 
 end
-
