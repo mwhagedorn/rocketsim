@@ -32,15 +32,14 @@ module PocketRocket
       say @repo.find_engine_by_code(engineCode).inspect
     end
 
-    desc "run_simulation ROCKETNAME ENGINECODE", "run a simulation with rocket and engine"
+    desc "run_simulation ROCKETNAME ENGINECODE LAUNCH_ANGLE", "run a simulation with rocket and engine and launch angle"
 
-    def run_simulation(rocket_name,engine_code)
+    def run_simulation(rocket_name,engine_code,launch_angle=90.0, wind_speed=0.0)
      @sim = PocketRocket::Simulation.new()
-     @sim.execute(rocket_name,engine_code)
+     @sim.execute(rocket_name,engine_code,launch_angle, wind_speed)
 
     end
 
 
   end
 end
-

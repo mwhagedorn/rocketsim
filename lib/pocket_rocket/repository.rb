@@ -55,15 +55,22 @@ module PocketRocket
                                          :empty_weight_g            => 51.0,
                                          :max_body_tube_diameter_mm => 28,
                                          :drag_coefficient          => 0.8)
+
       @rockets["astra"] = Rocket.new(:name                      => "astra",
-                                         :empty_weight_g            => 23.0,
-                                         :max_body_tube_diameter_mm => 25,
-                                         :drag_coefficient          => 0.8)
+                                     :empty_weight_g            => 23.0,
+                                     :max_body_tube_diameter_mm => 25,
+                                     :drag_coefficient          => 0.8)
 
       @rockets["red_max"] = Rocket.new(:name                      => "red_max",
-                                     :empty_weight_g            => 68.0,
-                                     :max_body_tube_diameter_mm => 42,
-                                     :drag_coefficient          => 0.8)
+                                       :empty_weight_g            => 68.0,
+                                       :max_body_tube_diameter_mm => 42,
+                                       :drag_coefficient          => 0.8)
+
+      @rockets["payloader_one"] = Rocket.new(:name => "payloader_one",
+                                             :empty_weight_g => 59.0,
+                                             :max_body_tube_diameter_mm => 24.9,
+                                             :drag_coefficient          => 0.75)
+
 
 
     end

@@ -43,7 +43,7 @@ module PocketRocket
       self.grav = GRAV
     end
 
-    def execute(rocket_name, engine_code)
+    def execute(rocket_name, engine_code, angle=0.0, wind_speed=0.0)
 
       @motor        = get_motor(engine_code)
       @rocket       = get_rocket(rocket_name)
@@ -61,10 +61,14 @@ module PocketRocket
       self.motor_force      = 0
       self.drag_constant =  (0.5*self.rho*@rocket.drag_coefficient*self.pi/4)*((@rocket.max_body_tube_diameter_mm*0.001)**2.0)
       log
-      velocity_at_instant(rocket, motor)
-
+      velocity_at_instant(rocket, motor, angle.to_f)
+      base_angle = angle.to_f
       while self.current_velocity > 0 || self.time_stamp < burn_time
-        velocity_at_instant(rocket, motor)
+        # 1m == ~3ft == launch rod length
+        if self.altitude > 1
+          angle = base_angle - self.weathercock_angle(wind_speed.to_f,self.current_velocity.to_f)
+        end
+        velocity_at_instant(rocket, motor,angle.to_f )
       end
 
       Formatador.display_table(@data, [:time_stamp, :altitude, :velocity, :acceleration, :motor_force, :mass])
@@ -73,29 +77,36 @@ module PocketRocket
       optimum_delay = coast_to_apogee_time
 
 
-      @summary_data = [{:apogee        => self.apogee.round, :max_v => self.max_velocity.round,
-                        :max_a         => self.max_acceleration.round, :burn_time => self.burn_time,
+      @summary_data = [{:apogee        => self.apogee.round(2), :max_v => self.max_velocity.round(2),
+                        :max_a         => self.max_acceleration.round(2),
+                        :ave_a => self.ave_accell.round(2),
+                        :burn_time => self.burn_time,
+                        :burn_alt => self.burn_alt.round(2),
                         :coast_time    => self.coast_to_apogee_time.round(2),
                         :eject_time    => self.apogee_to_eject_time.round(2),
                         :optimum_delay => optimum_delay.round,
                         :launch_rod    => velocity_at_end_of_launch_rod.round,
                         :max_safe_wind => (velocity_at_end_of_launch_rod/5.0).round}]
 
-      Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time, :max_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind])
+      Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time,:burn_alt,:max_a, :ave_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind])
 
 
       puts "english units"
 
-      @summary_data = [{:apogee        => (self.apogee*3.28).round, :max_v => (self.max_velocity*3.28).round,
-                        :max_a         => (self.max_acceleration).round, :burn_time => self.burn_time,
+      @summary_data = [{:apogee => (self.apogee*3.28).round(2),
+                        :max_v => (self.max_velocity*2.23).round(2),
+                        :max_a => (self.max_acceleration).round(2),
+                        :ave_a => self.ave_accell.round(2),
+                        :burn_time => self.burn_time,
+                        :burn_alt => (self.burn_alt*3.28).round(2),
                         :coast_time    => self.coast_to_apogee_time.round(2),
                         :eject_time    => self.apogee_to_eject_time.round(2),
                         :optimum_delay => optimum_delay.round,
-                        :launch_rod    => (velocity_at_end_of_launch_rod*3.28).round,
-                        :max_safe_wind => (velocity_at_end_of_launch_rod*3.28/5.0).round}]
+                        :launch_rod    => (velocity_at_end_of_launch_rod*2.23).round,
+                        :max_safe_wind => (velocity_at_end_of_launch_rod*2.23/5.0).round}]
 
-      Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time, :max_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind])
-    #puts self.ave_accell
+      Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time, :burn_alt, :max_a, :ave_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind])
+    puts ave_accell
     end
 
     def apogee
@@ -106,12 +117,18 @@ module PocketRocket
       @motor.burn_time
     end
 
+    def burn_alt
+      hdata              = altitude_curve
+      alt = Interpolate::Points.new(hdata).at(burn_time)
+    end
+
     def coast_to_apogee_time
       @data.last[:time_stamp] - burn_time
     end
 
     def apogee_to_eject_time
       #hack assumes 3 sec delay
+      #TODO calc range.. i.e. 3-5
       #@motor.delay - coast_to_apogee_time
       3 - coast_to_apogee_time
     end
@@ -124,12 +141,15 @@ module PocketRocket
       Interpolate::Points.new(vdata).at(time_at_end_of_rod)
     end
 
-    def velocity_at_instant(rocket, motor)
+    def velocity_at_instant(rocket, motor, angle=0.0)
       self.motor_force = motor.force_value_at(self.time_stamp)
       self.total_mass  = rocket.effective_mass(self.time_stamp)
       self.time_stamp  += time_step
 
-      self.altitude, self.current_velocity, self.accelleration = rk4(self.current_velocity, self.altitude, time_step)
+      memo_velocity = self.current_velocity
+      self.altitude, self.current_velocity = rk4(self.current_velocity, self.altitude, time_step, angle)
+
+      self.accelleration = (self.current_velocity - memo_velocity)/self.time_step * 0.101971621
 
       if self.current_velocity < 0
         interpolate_apogee_value
@@ -161,13 +181,14 @@ module PocketRocket
     end
 
     def accelleration_curve
-      curve_for(:accelleration)
+      curve_for(:acceleration)
     end
 
     def ave_accell
       data = accelleration_curve.collect{|item| item[1]}
-      data.inject(0.0){|sum,e1| sum+e1}/data.size
-
+      data.delete_if {|x| x == nil}
+      data.delete_if {|x| x < 0 }
+      data.inject(0.0){ |sum, el| sum + el }/ data.size
     end
 
     def curve_for(item)
@@ -186,25 +207,27 @@ module PocketRocket
       transposed
     end
 
-    def rk4(velocity, altitude, dt)
+    def rk4(velocity, altitude, dt, angle = 0)
       k1             = dt*altitude_derivative_at_n(velocity)
-      l1             = dt*velocity_derivative_at_n(velocity, rocket)
+      l1             = dt*velocity_derivative_at_n(velocity, rocket, angle)
       k2             = dt*altitude_derivative_at_n(velocity+l1/2.0)
-      l2             = dt*velocity_derivative_at_n(velocity+l1/2.0, rocket)
+      l2             = dt*velocity_derivative_at_n(velocity+l1/2.0, rocket, angle)
       k3             = dt*altitude_derivative_at_n(velocity+l2/2.0)
-      l3             = dt*velocity_derivative_at_n(velocity+l2/2.0, rocket)
+      l3             = dt*velocity_derivative_at_n(velocity+l2/2.0, rocket, angle)
       k4             = dt*altitude_derivative_at_n(velocity+l3)
-      l4             = dt*velocity_derivative_at_n(velocity+l3, rocket)
+      l4             = dt*velocity_derivative_at_n(velocity+l3, rocket, angle)
       altitude_n     = altitude+1.0/6.0*(k1+2.00*k2+2.00*k3+k4)
       velocity_n     = velocity+1.0/6.0*(l1+2.00*l2+2.00*l3+l4)
-      acceleration_n = velocity_derivative_at_n(velocity_n, rocket)/9.8
-      puts
-      [altitude_n, velocity_n, acceleration_n]
+      [altitude_n, velocity_n]
     end
 
-    def velocity_derivative_at_n(velocity, rocket)
+    def velocity_derivative_at_n(velocity, rocket, angle = 0.0)
+      # vertical forces = (thrust(t) - drag(t))*sin(angle) - weight
+      # a = f/m
+      angle_rad = angle * Math::PI/180
       drag_force = self.drag_constant*(velocity**2)
-      (self.motor_force-self.total_mass*self.grav-drag_force)/self.total_mass
+      weight_force = self.total_mass*self.grav
+      ((self.motor_force-drag_force)*Math::sin(angle_rad)-weight_force)/self.total_mass
     end
 
     def altitude_derivative_at_n(velocity)
@@ -236,8 +259,17 @@ module PocketRocket
       @data << {:time_stamp => time_stamp, :motor_force => motor_force, :altitude => altitude, :velocity => current_velocity, :mass => total_mass, :acceleration => accelleration}
     end
 
+    def weathercock_angle(wind_speed, relative_velocity)
+    #  ---->  wind_speed
+    #  \   |
+    #   \  | relative wind
+    #    \ |
+    # ang  V
+      if wind_speed == 0
+        wind_speed = 0.01
+      end
+      90-(Math::atan(relative_velocity/wind_speed)*57.2958).to_f
+    end
+
   end
 end
-
-
-
