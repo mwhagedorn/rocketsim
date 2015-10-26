@@ -12,11 +12,11 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/rocksim@Run_test__wrasp_parser_test___rocksim.coverage" NAME="Run test 'wrasp_parser_test': rocksim Coverage Results" MODIFIED="1398811181439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spec" MODULE_NAME="rocksim" />
+    <SUITE FILE_PATH="coverage/rocksim@engine.coverage" NAME="engine Coverage Results" MODIFIED="1398811222229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rocksim" />
+    <SUITE FILE_PATH="coverage/rocksim@Run_test__engine_test___rocksim.coverage" NAME="Run test 'engine_test': rocksim Coverage Results" MODIFIED="1398823177125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spec" MODULE_NAME="rocksim" />
     <SUITE FILE_PATH="coverage/rocksim@simulation.coverage" NAME="simulation Coverage Results" MODIFIED="1407606820480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rocksim" />
     <SUITE FILE_PATH="coverage/rocksim@repository.coverage" NAME="repository Coverage Results" MODIFIED="1407391395825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rocksim" />
-    <SUITE FILE_PATH="coverage/rocksim@Run_test__engine_test___rocksim.coverage" NAME="Run test 'engine_test': rocksim Coverage Results" MODIFIED="1398823177125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spec" MODULE_NAME="rocksim" />
-    <SUITE FILE_PATH="coverage/rocksim@engine.coverage" NAME="engine Coverage Results" MODIFIED="1398811222229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rocksim" />
-    <SUITE FILE_PATH="coverage/rocksim@Run_test__wrasp_parser_test___rocksim.coverage" NAME="Run test 'wrasp_parser_test': rocksim Coverage Results" MODIFIED="1398811181439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spec" MODULE_NAME="rocksim" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -30,91 +30,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pocket_rocket" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/pocket_rocket">
+      <file leaf-file-name="config_file.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/rubygems/config_file.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="88" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="198">
+            <state line="326" column="6" selection-start="8893" selection-end="8893" vertical-scroll-proportion="0.0" vertical-offset="4648" max-vertical-offset="7170">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Estes_B6.eng" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/engines/Estes_B6.eng">
+      <file leaf-file-name="couchbase.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.5/gems/couchbase-1.3.8/lib/couchbase.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="704">
+            <state line="32" column="7" selection-start="1009" selection-end="1009" vertical-scroll-proportion="0.0" vertical-offset="223" max-vertical-offset="2415">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Estes_C5.eng" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/engines/Estes_C5.eng">
+      <file leaf-file-name="couchbase.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/config/couchbase.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="726">
+            <state line="9" column="23" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Estes_C6.eng" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/engines/Estes_C6.eng">
+      <file leaf-file-name="named.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/models/named.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="11" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="858">
+            <state line="8" column="0" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/interpolate-0.3.0/lib/interpolate/base.rb">
+      <file leaf-file-name="map.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/models/rocket/all/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="5" selection-start="2735" selection-end="2735" vertical-scroll-proportion="0.0" vertical-offset="1540" max-vertical-offset="4070">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pocket_rocket.thor" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/pocket_rocket.thor">
+      <file leaf-file-name="couchbase-model.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.5/gems/couchbase-model-0.5.3/lib/couchbase-model.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="67" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="154">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pocket_rocket.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket.rb">
+      <file leaf-file-name="model.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.5/gems/couchbase-model-0.5.3/lib/couchbase/model.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="49" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="132">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="7155" max-vertical-offset="13065">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="repository.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/repository.rb">
+      <file leaf-file-name="railtie.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.5/gems/couchbase-model-0.5.3/lib/couchbase/railtie.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="7" selection-start="2486" selection-end="2486" vertical-scroll-proportion="0.18639053" vertical-offset="1084" max-vertical-offset="2112">
+            <state line="91" column="73" selection-start="2837" selection-end="2867" vertical-scroll-proportion="0.78296703" vertical-offset="795" max-vertical-offset="2220">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Estes_B4.eng" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/engines/Estes_B4.eng">
+      <file leaf-file-name="bucket.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.5/gems/couchbase-1.3.8/lib/couchbase/bucket.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6945">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Estes_A8.eng" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/engines/Estes_A8.eng">
+      <file leaf-file-name="app.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/app.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="11" selection-start="535" selection-end="535" vertical-scroll-proportion="0.0" vertical-offset="352" max-vertical-offset="836">
+            <state line="38" column="26" selection-start="1154" selection-end="1154" vertical-scroll-proportion="-22.8" vertical-offset="0" max-vertical-offset="765">
               <folding />
             </state>
           </provider>
@@ -143,23 +143,27 @@
         <option value="$PROJECT_DIR$/simulation.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/bin/pocket_rocket" />
-        <option value="$PROJECT_DIR$/lib/pocket_rocket.rb" />
         <option value="$PROJECT_DIR$/lib/pocket_rocket/wrasp_parser.rb" />
         <option value="$PROJECT_DIR$/lib/pocket_rocket/version.rb" />
         <option value="$PROJECT_DIR$/pocket_rocket.gemspec" />
         <option value="$PROJECT_DIR$/bin/pocket_rocket.thor" />
-        <option value="$PROJECT_DIR$/lib/pocket_rocket/rocket.rb" />
         <option value="$PROJECT_DIR$/lib/pocket_rocket/app.rb" />
         <option value="$PROJECT_DIR$/lib/pocket_rocket/engine.rb" />
         <option value="$PROJECT_DIR$/lib/pocket_rocket/simulation.rb" />
+        <option value="$PROJECT_DIR$/lib/pocket_rocket/rocket.rb" />
+        <option value="$PROJECT_DIR$/lib/pocket_rocket.rb" />
+        <option value="$PROJECT_DIR$/lib/pocket_rocket/config/couchbase.yml" />
+        <option value="$PROJECT_DIR$/lib/pocket_rocket/named.rb" />
+        <option value="$PROJECT_DIR$/lib/pocket_rocket/models/named.rb" />
+        <option value="$PROJECT_DIR$/lib/pocket_rocket/models/rocket/all/map.js" />
         <option value="$PROJECT_DIR$/lib/pocket_rocket/repository.rb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="835" />
+    <option name="height" value="828" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -205,7 +209,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="couchbase-model (v0.5.3, RVM: ruby-2.1.5) [gem]" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="rocksim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="couchbase-model (v0.5.3, RVM: ruby-2.1.5) [gem]" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -215,7 +241,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="couchbase-model (v0.5.3, RVM: ruby-2.1.5) [gem]" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="couchbase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="rocksim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rocketsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rocksim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rocketsim" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -229,7 +287,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rocksim" />
+              <option name="myItemId" value="rocketsim" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -247,7 +305,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rocksim" />
+              <option name="myItemId" value="rocketsim" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -259,7 +317,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="engines" />
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -269,11 +327,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rocksim" />
+              <option name="myItemId" value="rocketsim" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pocket_rocket" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rocket" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="all" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -292,9 +366,11 @@
     <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="SearchEverywhereHistory" value="" />
+    <property name="LayoutCode.rearrangeEntriesRuby" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/pocket_rocket/models" />
       <recent name="$PROJECT_DIR$/lib/pocket_rocket" />
       <recent name="$PROJECT_DIR$/lib" />
     </key>
@@ -434,6 +510,10 @@
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="RSpecRunConfigurationType" factoryName="RSpec">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="" />
@@ -515,6 +595,10 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <browser start="false" url="" with-js-debugger="false" />
+      <method />
+    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Ruby.simulation" />
       <item index="1" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.Run test 'wrasp_parser_test': rocksim" />
@@ -559,13 +643,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="835" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="828" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14652778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3504713" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -575,11 +658,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281372" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281372" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -635,7 +719,49 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/rocket.rb">
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/engines/Estes_C5.eng">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/engines/Estes_C6.eng">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="11" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="27" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/repository.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="7" selection-start="2490" selection-end="2490" vertical-scroll-proportion="0.0" vertical-offset="825" max-vertical-offset="1680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/engines/Estes_B4.eng">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/engines/Estes_A8.eng">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="11" selection-start="535" selection-end="535" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="570">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/models/rocket.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="18" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="612" />
       </provider>
@@ -643,11 +769,6 @@
     <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/simulation.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="0" selection-start="1213" selection-end="1213" vertical-scroll-proportion="0.0" vertical-offset="846" max-vertical-offset="1632" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/ruby-debug-ide-0.4.22/lib/ruby-debug-ide.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="0" selection-start="2049" selection-end="2049" vertical-scroll-proportion="0.0" vertical-offset="1310" max-vertical-offset="2516" />
       </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/rubystubs21/bignum.rb">
@@ -670,7 +791,7 @@
         <state line="48" column="22" selection-start="1286" selection-end="1286" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="1105" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/rocket.rb">
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/models/rocket.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="18" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="612" />
       </provider>
@@ -678,11 +799,6 @@
     <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/simulation.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="73" column="42" selection-start="1545" selection-end="1545" vertical-scroll-proportion="0.0" vertical-offset="1241" max-vertical-offset="1632" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/ruby-debug-ide-0.4.22/lib/ruby-debug-ide.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="0" selection-start="2049" selection-end="2049" vertical-scroll-proportion="0.0" vertical-offset="1310" max-vertical-offset="2516" />
       </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/rubystubs21/bignum.rb">
@@ -705,7 +821,7 @@
         <state line="29" column="2" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="646" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/rocket.rb">
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/models/rocket.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="8" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="442" />
       </provider>
@@ -730,11 +846,6 @@
         <state line="19" column="6" selection-start="842" selection-end="842" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="4488" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../fog/lib/fog/hp/compute_v2.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="5389" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/wrasp_parser_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="0" selection-start="595" selection-end="595" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476" />
@@ -745,34 +856,9 @@
         <state line="9" column="0" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289" />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/minitest-5.3.2/lib/minitest/spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="233" column="0" selection-start="6384" selection-end="6384" vertical-scroll-proportion="0.0" vertical-offset="3639" max-vertical-offset="4896" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/minitest-5.3.2/lib/minitest/test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="0" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0" vertical-offset="1650" max-vertical-offset="4913" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/minitest-reporters-1.0.2/lib/minitest/reporters.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1561" selection-end="1561" vertical-scroll-proportion="0.0" vertical-offset="343" max-vertical-offset="1309" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/minitest-5.3.2/lib/minitest.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="0" selection-start="938" selection-end="938" vertical-scroll-proportion="0.0" vertical-offset="562" max-vertical-offset="13124" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/engine_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="23" selection-start="174" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/ruby-debug-ide-0.4.22/lib/ruby-debug-ide.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="0" selection-start="2049" selection-end="2049" vertical-scroll-proportion="0.33333334" vertical-offset="1140" max-vertical-offset="2516" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/junk.json">
@@ -785,48 +871,14 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="858" />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/formatador-0.2.5/lib/formatador/table.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="8" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="2288" />
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/rubystubs21/kernel.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2226" column="6" selection-start="93909" selection-end="93909" vertical-scroll-proportion="0.0" vertical-offset="48493" max-vertical-offset="49324">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../helion/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="220" />
+        <state line="2226" column="6" selection-start="93909" selection-end="93909" vertical-scroll-proportion="0.0" vertical-offset="48493" max-vertical-offset="49324" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/version.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="14" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="176" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="7" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="198">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pocket_rocket.gemspec">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="15" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="726" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/app.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="26" selection-start="1090" selection-end="1090" vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="1144" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/rocket.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="21" selection-start="110" selection-end="126" vertical-scroll-proportion="0.15449437" vertical-offset="0" max-vertical-offset="1056" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/wrasp_parser.rb">
@@ -876,44 +928,100 @@
         <state line="39" column="33" selection-start="910" selection-end="916" vertical-scroll-proportion="0.38202247" vertical-offset="432" max-vertical-offset="1430" />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/interpolate-0.3.0/lib/interpolate/base.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="5" selection-start="2735" selection-end="2735" vertical-scroll-proportion="0.0" vertical-offset="1540" max-vertical-offset="4070">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/pocket_rocket">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="88" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="198">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/pocket_rocket.thor">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="67" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="712">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/simulation.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="198" column="63" selection-start="6298" selection-end="6298" vertical-scroll-proportion="-0.65976334" vertical-offset="4802" max-vertical-offset="5478">
+        <state line="198" column="23" selection-start="6410" selection-end="6410" vertical-scroll-proportion="-118.8" vertical-offset="0" max-vertical-offset="4215">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/app.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="26" selection-start="1154" selection-end="1154" vertical-scroll-proportion="-22.8" vertical-offset="0" max-vertical-offset="765">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pocket_rocket.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="49" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="132">
+        <state line="0" column="18" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="703">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/rubygems/config_file.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="326" column="6" selection-start="8893" selection-end="8893" vertical-scroll-proportion="0.0" vertical-offset="4648" max-vertical-offset="7170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.5/gems/couchbase-1.3.8/lib/couchbase.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="7" selection-start="1009" selection-end="1009" vertical-scroll-proportion="0.0" vertical-offset="223" max-vertical-offset="2415">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/models/rocket.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="24" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.5/gems/couchbase-model-0.5.3/lib/couchbase-model.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="728">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.5/gems/couchbase-model-0.5.3/lib/couchbase/model.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="7155" max-vertical-offset="13065">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.5/gems/couchbase-1.3.8/lib/couchbase/bucket.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6945">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/config/couchbase.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="23" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/models/named.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/models/rocket/all/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="728">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pocket_rocket/repository.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="7" selection-start="2486" selection-end="2486" vertical-scroll-proportion="0.18639053" vertical-offset="1084" max-vertical-offset="2112">
+        <state line="20" column="7" selection-start="553" selection-end="553" vertical-scroll-proportion="0.11401099" vertical-offset="217" max-vertical-offset="1680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.5/gems/couchbase-model-0.5.3/lib/couchbase/railtie.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="73" selection-start="2837" selection-end="2867" vertical-scroll-proportion="0.78296703" vertical-offset="795" max-vertical-offset="2220">
           <folding />
         </state>
       </provider>

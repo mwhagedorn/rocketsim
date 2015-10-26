@@ -1,9 +1,15 @@
 require_relative "engine"
-require_relative "rocket"
+require_relative "models/rocket"
 require_relative "wrasp_parser"
+require 'couchbase'
+
+class Hash
+    include Hashie::Extensions::IndifferentAccess
+end
 
 module PocketRocket
   class Repository
+    BUCKET_NAME = "pocket_rocket"
     attr_accessor :motors
     attr_accessor :rockets
 
@@ -12,8 +18,10 @@ module PocketRocket
       @rockets = {}
       setup_engines
       setup_rockets
-
-
+      config = YAML::load_file(File.join(__dir__,'config', 'couchbase.yml'))["development"]
+      Couchbase.connection_options = config.with_indifferent_access
+      puts "*** #{config} ***"
+      puts "*** #{Couchbase.bucket} ***"
     end
 
     def setup_engines
@@ -71,6 +79,11 @@ module PocketRocket
                                              :max_body_tube_diameter_mm => 24.9,
                                              :drag_coefficient          => 0.75)
 
+      @rockets["lr15"] = Rocket.new(:name => "lr15",
+                                            :empty_weight_g => 38.0,
+                                            :max_body_tube_diameter_mm => 24.8,
+                                            :drag_coefficient          => 0.75)
+
 
 
     end
@@ -88,7 +101,7 @@ module PocketRocket
     end
 
     def rockets
-      @rockets.keys
+     Rocket.all
     end
 
 
