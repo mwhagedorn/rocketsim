@@ -27,7 +27,9 @@ module PocketRocket
       :drag_constant,
       :rho,
       :pi,
-      :grav
+      :grav,
+      :descent_rate,
+      :descent_time
     ]
 
     attr_accessor(*VALID_KEYS)
@@ -47,7 +49,7 @@ module PocketRocket
 
       @motor        = get_motor(engine_code)
       @rocket       = get_rocket(rocket_name)
-      rocket.engine = @motor
+      @rocket.engine = @motor
       @data         = []
 
       self.time_stamp       = 0
@@ -57,9 +59,11 @@ module PocketRocket
       self.altitude         = 0
       self.time_step        = 0.005
       self.velocity         = 0
-      self.total_mass       = rocket.effective_mass(self.time_stamp)
+      self.total_mass       = @rocket.effective_mass(self.time_stamp)
       self.motor_force      = 0
       self.drag_constant =  (0.5*self.rho*@rocket.drag_coefficient*self.pi/4)*((@rocket.max_body_tube_diameter_mm*0.001)**2.0)
+      self.descent_time = 0.0
+      self.descent_rate = 0.0
       log
       velocity_at_instant(rocket, motor, angle.to_f)
       base_angle = angle.to_f
@@ -71,12 +75,29 @@ module PocketRocket
         velocity_at_instant(rocket, motor,angle.to_f )
       end
 
+      # calculate descent rate
+      if @rocket.parachute_diameter_cm
+        if @rocket.parachute_shape
+          numerator = 2 * self.grav * self.total_mass
+          denominator = self.parachute_area(@rocket.parachute_diameter_cm,@rocket.parachute_shape) * self.rho * 0.75
+          v = Math.sqrt( numerator / denominator )
+          self.descent_time = self.apogee/v
+          self.descent_rate = v
+        end
+
+      end
+
       Formatador.display_table(@data, [:time_stamp, :altitude, :velocity, :acceleration, :motor_force, :mass])
 
 
       optimum_delay = coast_to_apogee_time
 
-
+      safe_descent = 3.5..4.5
+      if safe_descent.include?(self.descent_rate)
+        descent_display = "[green]#{(self.descent_rate).round(2)}"
+      else
+        descent_display = "[red]#{(self.descent_rate).round(2)}"
+      end
       @summary_data = [{:apogee        => self.apogee.round(2), :max_v => self.max_velocity.round(2),
                         :max_a         => self.max_acceleration.round(2),
                         :ave_a => self.ave_accell.round(2),
@@ -86,12 +107,23 @@ module PocketRocket
                         :eject_time    => self.apogee_to_eject_time.round(2),
                         :optimum_delay => optimum_delay.round,
                         :launch_rod    => velocity_at_end_of_launch_rod.round,
-                        :max_safe_wind => (velocity_at_end_of_launch_rod/5.0).round}]
+                        :max_safe_wind => (velocity_at_end_of_launch_rod/5.0).round,
+                        :descent_rate => descent_display,
+                        :descent_time => "[green]#{self.descent_time.round(2)}",
+                        :total_time => self.burn_time + self.coast_to_apogee_time.round(2) + self.descent_time.round(2)
+                       }]
 
-      Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time,:burn_alt,:max_a, :ave_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind])
+      Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time,:burn_alt,:max_a, :ave_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind, :descent_rate, :descent_time, :total_time])
 
 
       puts "english units"
+
+      safe_descent = 11.5..14.8
+      if safe_descent.include?(self.descent_rate*3.28)
+        descent_display = "[green]#{(self.descent_rate*3.28).round(2)}"
+      else
+        descent_display = "[red]#{(self.descent_rate*3.28).round(2)}"
+      end
 
       @summary_data = [{:apogee => (self.apogee*3.28).round(2),
                         :max_v => (self.max_velocity*2.23).round(2),
@@ -103,10 +135,57 @@ module PocketRocket
                         :eject_time    => self.apogee_to_eject_time.round(2),
                         :optimum_delay => optimum_delay.round,
                         :launch_rod    => (velocity_at_end_of_launch_rod*2.23).round,
-                        :max_safe_wind => (velocity_at_end_of_launch_rod*2.23/5.0).round}]
+                        :max_safe_wind => (velocity_at_end_of_launch_rod*2.23/5.0).round,
+                        :descent_rate => descent_display,
+                        :descent_time => "[green]#{self.descent_time.round(2)}",
+                        :total_time => self.burn_time + self.coast_to_apogee_time.round(2) + self.descent_time.round(2)}]
 
-      Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time, :burn_alt, :max_a, :ave_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind])
-    puts ave_accell
+      Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time, :burn_alt, :max_a, :ave_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind, :descent_rate, :descent_time, :total_time])
+    end
+
+    def parachute_area(diameter_cm, shape="hexagon")
+      diameter_m = diameter_cm * 0.01
+      if shape == "square"
+        return diameter_m**2.0
+      end
+      if shape == "hexagon"
+        return 0.866 * diameter_m**2.0
+      end
+      if shape == "octagon"
+        return 0.828 * diameter_m**2.0
+      end
+      if shape == "circle"
+        return Math::PI/4*diameter_m**2.0
+      end
+    end
+
+    def recommended_parachute_cm(mass_g)
+        if mass_g >= 300
+          return 84
+        end
+        if mass_g >= 200
+          return 69
+        end
+        if mass_g >= 150
+          return 59
+        end
+        if mass_g >= 100
+          return 48
+        end
+
+        if mass_g >= 80
+          return 43
+        end
+
+        if mass_g >= 40
+          return 31
+        end
+
+        if mass_g >= 20
+          return 22
+        end
+
+        return 0
     end
 
     def apogee
@@ -154,6 +233,7 @@ module PocketRocket
       if self.current_velocity < 0
         interpolate_apogee_value
       end
+
       log
       check_max_velocity(current_velocity)
       check_max_accell(accelleration)
@@ -248,7 +328,6 @@ module PocketRocket
 
     def get_rocket(name)
       @repository.find_rocket_by_name(name)
-
     end
 
     def get_motor(code)

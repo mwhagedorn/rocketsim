@@ -2,10 +2,7 @@ require_relative "engine"
 require_relative "models/rocket"
 require_relative "wrasp_parser"
 require 'couchbase'
-
-class Hash
-    include Hashie::Extensions::IndifferentAccess
-end
+require 'active_support/core_ext/hash'
 
 module PocketRocket
   class Repository
@@ -18,10 +15,8 @@ module PocketRocket
       @rockets = {}
       setup_engines
       setup_rockets
-      config = YAML::load_file(File.join(__dir__,'config', 'couchbase.yml'))["development"]
+      config = HashWithIndifferentAccess.new(YAML::load_file(File.join(__dir__,'config', 'couchbase.yml'))["development"])
       Couchbase.connection_options = config.with_indifferent_access
-      puts "*** #{config} ***"
-      puts "*** #{Couchbase.bucket} ***"
     end
 
     def setup_engines
@@ -92,8 +87,8 @@ module PocketRocket
       @motors[code]
     end
 
-    def find_rocket_by_name(code)
-      @rockets[code]
+    def find_rocket_by_name(name)
+      Rocket.all.to_a.select { |item| item.name == name }.first
     end
 
     def codes
@@ -101,7 +96,7 @@ module PocketRocket
     end
 
     def rockets
-     Rocket.all
+     Rocket.all.to_a.collect { |item| item.name }
     end
 
 

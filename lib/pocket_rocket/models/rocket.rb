@@ -1,49 +1,46 @@
-
 require_relative 'named'
 
-module PocketRocket
-  class Rocket < Named
-    VALID_KEYS = [
-        :empty_weight_g,
-        :max_body_tube_diameter_mm,
-        :drag_coefficient,
-        :engine,
-        :current_mass
-    ]
+class Rocket < Couchbase::Model
 
-    attr_accessor(*VALID_KEYS)
-
-    view :all, :stale => false
-
-    def initialize(options={})
-      VALID_KEYS.each do |key|
-        send("#{key}=", options[key])
-      end
-    end
-
-    def mass
-      empty_weight_g*0.001
-    end
-
-    def effective_mass(time)
-      mass + engine.mass_at_time(time)
-    end
-
-    def inspect
-
-      display = {}
-      VALID_KEYS.each do |key|
-        display[key] = self.send(key)
-      end
-      Formatador.display_table([display], VALID_KEYS)
-
-    end
+  attribute :name
+  attribute :empty_weight_g
+  attribute :max_body_tube_diameter_mm
+  attribute :drag_coefficient
+  attribute :current_mass
+  attribute :engine
+  attribute :parachute_shape
+  attribute :parachute_diameter_cm
 
 
-    private
 
-      def radius
-        :max_body_tube_diameter / 2
-      end
-    end
+  view :all, :stale => false, :include_docs => true
+
+
+  def mass
+    empty_weight_g*0.001
   end
+
+  def effective_mass(time)
+    mass + engine.mass_at_time(time)
+  end
+
+  def inspect
+
+    display = {}
+    self.attributes.each do |key,value|
+     display[key] = value
+    end
+
+    Formatador.display_table([display], self.attributes.keys)
+
+  end
+
+
+
+  private
+
+  def radius
+    :max_body_tube_diameter / 2
+  end
+end
+
