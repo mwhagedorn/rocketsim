@@ -12,7 +12,7 @@ module PocketRocket
     #  :force_at_time,
     #  :sim_tick
     #]
-    VALID_KEYS = [:code, :diameter, :length, :delay, :propellant_weight, :engine_weight, :thrust_curve, :manufacturer, :burn_time]
+    VALID_KEYS = [:code, :diameter, :length, :delay, :propellant_weight, :engine_weight, :thrust_curve,:mass_curve, :manufacturer, :burn_time]
 
     attr_accessor(*VALID_KEYS)
 
@@ -31,19 +31,19 @@ module PocketRocket
     end
 
     def mass_at_time(time)
-      return engine_weight unless burn_time
       return (engine_weight - propellant_weight) if time >= burn_time
-      return engine_weight - (time/burn_time)*propellant_weight
+      return @mdata.at(time)
+    end
+
+    def mass_curve=(data)
+      data.merge({0.0 => engine_weight})
+      @mdata = Interpolate::Points.new(data)
     end
 
     def thrust_curve=(data)
       @data = Interpolate::Points.new(data)
-      @data.merge{[0.0,0.0]}
     end
 
-    def burn_time
-      @data.points.keys.last.to_f if @data
-    end
 
     def propellant_weight
       @propellant_weight.to_f

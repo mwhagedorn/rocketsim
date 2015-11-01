@@ -1,6 +1,7 @@
 require "thor"
 require_relative "repository"
 require_relative "simulation"
+require_relative "builder"
 
 module PocketRocket
   class App < Thor
@@ -38,6 +39,14 @@ module PocketRocket
      @sim = PocketRocket::Simulation.new()
      @sim.execute(rocket_name,engine_code,launch_angle, wind_speed)
 
+    end
+
+    desc "create_template", "create a template for a rocket"
+
+    def create_template
+      @builder = PocketRocket::RocketBuilder.new
+      say @builder.key
+      say @builder.template.to_json
     end
 
 

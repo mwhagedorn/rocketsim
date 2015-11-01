@@ -29,7 +29,8 @@ module PocketRocket
       :pi,
       :grav,
       :descent_rate,
-      :descent_time
+      :descent_time,
+      :wind_speed
     ]
 
     attr_accessor(*VALID_KEYS)
@@ -61,9 +62,11 @@ module PocketRocket
       self.velocity         = 0
       self.total_mass       = @rocket.effective_mass(self.time_stamp)
       self.motor_force      = 0
-      self.drag_constant =  (0.5*self.rho*@rocket.drag_coefficient*self.pi/4)*((@rocket.max_body_tube_diameter_mm*0.001)**2.0)
+      area = self.cross_sectional_area(@rocket.max_body_tube_diameter_mm)
+      self.drag_constant =  (self.rho*@rocket.drag_coefficient*area)/2
       self.descent_time = 0.0
       self.descent_rate = 0.0
+      self.wind_speed = wind_speed
       log
       velocity_at_instant(rocket, motor, angle.to_f)
       base_angle = angle.to_f
@@ -98,6 +101,12 @@ module PocketRocket
       else
         descent_display = "[red]#{(self.descent_rate).round(2)}"
       end
+
+      if velocity_at_end_of_launch_rod.round >= 13
+        vlr_display = "[green]#{(self.velocity_at_end_of_launch_rod).round(2)}"
+      else
+        vlr_display = "[red]#{(self.velocity_at_end_of_launch_rod).round(2)}"
+      end
       @summary_data = [{:apogee        => self.apogee.round(2), :max_v => self.max_velocity.round(2),
                         :max_a         => self.max_acceleration.round(2),
                         :ave_a => self.ave_accell.round(2),
@@ -106,7 +115,7 @@ module PocketRocket
                         :coast_time    => self.coast_to_apogee_time.round(2),
                         :eject_time    => self.apogee_to_eject_time.round(2),
                         :optimum_delay => optimum_delay.round,
-                        :launch_rod    => velocity_at_end_of_launch_rod.round,
+                        :launch_rod    => vlr_display,
                         :max_safe_wind => (velocity_at_end_of_launch_rod/5.0).round,
                         :descent_rate => descent_display,
                         :descent_time => "[green]#{self.descent_time.round(2)}",
@@ -125,7 +134,16 @@ module PocketRocket
         descent_display = "[red]#{(self.descent_rate*3.28).round(2)}"
       end
 
+      # m/s to mph
+      if (velocity_at_end_of_launch_rod*2.23).round >= 30
+        #mph
+        vlr_display = "[green]#{(self.velocity_at_end_of_launch_rod*2.23).round(2)}"
+      else
+        vlr_display = "[red]#{(self.velocity_at_end_of_launch_rod*2.23).round(2)}"
+      end
+
       @summary_data = [{:apogee => (self.apogee*3.28).round(2),
+                        #mph
                         :max_v => (self.max_velocity*2.23).round(2),
                         :max_a => (self.max_acceleration).round(2),
                         :ave_a => self.ave_accell.round(2),
@@ -134,7 +152,7 @@ module PocketRocket
                         :coast_time    => self.coast_to_apogee_time.round(2),
                         :eject_time    => self.apogee_to_eject_time.round(2),
                         :optimum_delay => optimum_delay.round,
-                        :launch_rod    => (velocity_at_end_of_launch_rod*2.23).round,
+                        :launch_rod    => vlr_display,
                         :max_safe_wind => (velocity_at_end_of_launch_rod*2.23/5.0).round,
                         :descent_rate => descent_display,
                         :descent_time => "[green]#{self.descent_time.round(2)}",
@@ -188,6 +206,11 @@ module PocketRocket
         return 0
     end
 
+    def drift_distance(descent_time)
+      # x sec * w m/sec
+      return self.wind_speed * descent_time
+    end
+
     def apogee
       @data.last[:altitude]
     end
@@ -209,15 +232,23 @@ module PocketRocket
       #hack assumes 3 sec delay
       #TODO calc range.. i.e. 3-5
       #@motor.delay - coast_to_apogee_time
+
       3 - coast_to_apogee_time
     end
 
     def velocity_at_end_of_launch_rod
-      #== velocity at .9 meters
+      # == velocity at .9 meters
+      # > 13 m/s for safety, 30 mph
+      # NAR  launchsafe - 4 times the velocity at which the wind is blowing
       vdata              = velocity_curve
       hdata              = altitude_curve
       time_at_end_of_rod = Interpolate::Points.new(transpose(hdata)).at(0.9)
       Interpolate::Points.new(vdata).at(time_at_end_of_rod)
+    end
+
+    def max_safe_wind
+      # NAR  launchsafe - 4 times the velocity at which the wind is blowing
+      (velocity_at_end_of_launch_rod/4.0).round
     end
 
     def velocity_at_instant(rocket, motor, angle=0.0)
@@ -339,9 +370,9 @@ module PocketRocket
     end
 
     def weathercock_angle(wind_speed, relative_velocity)
-    #  ---->  wind_speed
+    #  ---->  wind_speed m/sec
     #  \   |
-    #   \  | relative wind
+    #   \  | relative wind m/sec
     #    \ |
     # ang  V
       if wind_speed == 0
@@ -350,5 +381,9 @@ module PocketRocket
       90-(Math::atan(relative_velocity/wind_speed)*57.2958).to_f
     end
 
+    def cross_sectional_area(diameter_mm)
+      diameter_m = diameter_mm/1000.0
+      PI*(diameter_m**2.0)/4
+    end
   end
 end
