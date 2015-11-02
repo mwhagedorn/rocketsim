@@ -23,7 +23,7 @@ module PocketRocket
       @motors["A8"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_A8.rse").parse.to_h)
       @motors["A6"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Quest_A6.rse").parse.to_h)
       #@motors["A3"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_A3.eng").parse.to_h)
-      @motors["A10"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_A10.eng").parse.to_h)
+      @motors["A10"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_A10.rse").parse.to_h)
       @motors["C6"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_C6.rse").parse.to_h)
       #@motors["C5"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_C5.eng").parse.to_h)
       @motors["B6"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_B6.rse").parse.to_h)
