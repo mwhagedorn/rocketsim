@@ -82,7 +82,7 @@ module PocketRocket
       if @rocket.parachute_diameter_cm
         if @rocket.parachute_shape
           numerator = 2 * self.grav * self.total_mass
-          denominator = self.parachute_area(@rocket.parachute_diameter_cm,@rocket.parachute_shape) * self.rho * 0.75
+          denominator = self.parachute_area(@rocket.parachute_diameter_cm,@rocket.parachute_shape) * self.rho * 1.75
           v = Math.sqrt( numerator / denominator )
           self.descent_time = self.apogee/v
           self.descent_rate = v
