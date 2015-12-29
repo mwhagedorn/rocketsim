@@ -11,6 +11,8 @@ class Rocket < Couchbase::Model
   attribute :parachute_shape
   attribute :parachute_diameter_cm
 
+  attr_accessor :mass_override
+
 
 
   view :all, :stale => false, :include_docs => true
@@ -21,6 +23,10 @@ class Rocket < Couchbase::Model
   end
 
   def effective_mass(time)
+    if @mass_override > 0.0
+      puts("*** mass override ***")
+      return @mass_override*0.001 + engine.mass_at_time(time)
+    end
     mass + engine.mass_at_time(time)
   end
 

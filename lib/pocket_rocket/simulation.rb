@@ -46,11 +46,14 @@ module PocketRocket
       self.grav = GRAV
     end
 
-    def execute(rocket_name, engine_code, angle=0.0, wind_speed=0.0)
+    def execute(rocket_name, engine_code, angle=0.0, wind_speed=0.0, mass_override=0.0, chute_override=0.0)
 
       @motor        = get_motor(engine_code)
       @rocket       = get_rocket(rocket_name)
       @rocket.engine = @motor
+      if mass_override
+        @rocket.mass_override = mass_override
+      end
       @data         = []
 
       self.time_stamp       = 0
@@ -82,7 +85,11 @@ module PocketRocket
       if @rocket.parachute_diameter_cm
         if @rocket.parachute_shape
           numerator = 2 * self.grav * self.total_mass
-          denominator = self.parachute_area(@rocket.parachute_diameter_cm,@rocket.parachute_shape) * self.rho * 1.75
+          diameter = @rocket.parachute_diameter_cm
+          if chute_override > 0.0
+            diameter = chute_override
+          end
+          denominator = self.parachute_area(diameter,@rocket.parachute_shape) * self.rho * 0.75
           v = Math.sqrt( numerator / denominator )
           self.descent_time = self.apogee/v
           self.descent_rate = v
@@ -107,6 +114,10 @@ module PocketRocket
       else
         vlr_display = "[red]#{(self.velocity_at_end_of_launch_rod).round(2)}"
       end
+
+      puts "Liftoff Mass"
+      puts @rocket.effective_mass(0.0)
+
       @summary_data = [{:apogee        => self.apogee.round(2), :max_v => self.max_velocity.round(2),
                         :max_a         => self.max_acceleration.round(2),
                         :ave_a => self.ave_accell.round(2),
@@ -119,11 +130,13 @@ module PocketRocket
                         :max_safe_wind => (velocity_at_end_of_launch_rod/5.0).round,
                         :descent_rate => descent_display,
                         :descent_time => "[green]#{self.descent_time.round(2)}",
-                        :total_time => self.burn_time + self.coast_to_apogee_time.round(2) + self.descent_time.round(2)
+                        :total_time => self.burn_time.round(2) + self.coast_to_apogee_time.round(2) + self.descent_time.round(2)
                        }]
 
       Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time,:burn_alt,:max_a, :ave_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind, :descent_rate, :descent_time, :total_time])
 
+      puts "Descent Mass"
+      puts @rocket.effective_mass(self.time_stamp)
 
       puts "english units"
 
@@ -142,6 +155,10 @@ module PocketRocket
         vlr_display = "[red]#{(self.velocity_at_end_of_launch_rod*2.23).round(2)}"
       end
 
+      puts "Liftoff Mass"
+      puts @rocket.effective_mass(0.0)
+
+
       @summary_data = [{:apogee => (self.apogee*3.28).round(2),
                         #mph
                         :max_v => (self.max_velocity*2.23).round(2),
@@ -156,9 +173,22 @@ module PocketRocket
                         :max_safe_wind => (velocity_at_end_of_launch_rod*2.23/5.0).round,
                         :descent_rate => descent_display,
                         :descent_time => "[green]#{self.descent_time.round(2)}",
-                        :total_time => self.burn_time + self.coast_to_apogee_time.round(2) + self.descent_time.round(2)}]
-
+                        :total_time => (self.burn_time + self.coast_to_apogee_time + self.descent_time.round(2)).round(2)}]
+      puts("** ascent **")
       Formatador.display_table(@summary_data, [:apogee, :max_v, :burn_time, :burn_alt, :max_a, :ave_a, :coast_time, :eject_time, :optimum_delay, :launch_rod, :max_safe_wind, :descent_rate, :descent_time, :total_time])
+      puts("** descent **")
+
+      puts "Descent Mass"
+      puts @rocket.effective_mass(self.time_stamp)
+
+      @summary_data = [{:descent_rate => mps_to_fps(self.descent_rate).round(2),
+                        :descent_time => self.descent_time.round(2),
+                        :drift_2mph => m_to_ft(self.drift_distance_at(mph_to_mps(2))).round(2),
+                        :drift_at3mph => m_to_ft(self.drift_distance_at(mph_to_mps(3))).round(2),
+                        :drift_at4mph => m_to_ft(self.drift_distance_at(mph_to_mps(4))).round(2),
+                        :drift_at5mph => m_to_ft(self.drift_distance_at(mph_to_mps(5))).round(2)}]
+      Formatador.display_table(@summary_data, [:descent_rate, :drift_2mph, :drift_at3mph, :drift_at4mph, :drift_at5mph])
+
     end
 
     def parachute_area(diameter_cm, shape="hexagon")
@@ -209,6 +239,11 @@ module PocketRocket
     def drift_distance(descent_time)
       # x sec * w m/sec
       return self.wind_speed * descent_time
+    end
+
+    def drift_distance_at(wind_speed_m)
+      # return meters
+      return self.descent_time * wind_speed_m
     end
 
     def apogee
@@ -387,3 +422,23 @@ module PocketRocket
     end
   end
 end
+
+
+def mps_to_mph(meters_per_second)
+  return meters_per_second * 2.237
+end
+
+def mps_to_fps(mps)
+   mps_to_mph(mps) * 1.4667
+end
+
+def mph_to_mps(miles_per_hour)
+  return miles_per_hour * 0.44704
+end
+
+def m_to_ft(meters)
+  return meters * 3.281
+end
+
+
+

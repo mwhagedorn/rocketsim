@@ -28,6 +28,7 @@ module PocketRocket
       #@motors["C5"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_C5.eng").parse.to_h)
       @motors["B6"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_B6.rse").parse.to_h)
       @motors["B4"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_B4.rse").parse.to_h)
+      @motors["D12"] = Engine.new(EngineParser.new("#{File.dirname(__FILE__)}/engines/Estes_D12.rse").parse.to_h)
 
       @motors.each_pair do |code, motor|
         motor.code = code

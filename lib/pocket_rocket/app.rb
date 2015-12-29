@@ -34,9 +34,18 @@ module PocketRocket
     end
 
     desc "run_simulation ROCKETNAME ENGINECODE LAUNCH_ANGLE", "run a simulation with rocket and engine and launch angle"
-
+    method_options :mass => :numeric
+    method_options :chute => :numeric
     def run_simulation(rocket_name,engine_code,launch_angle=90.0, wind_speed=0.0)
      @sim = PocketRocket::Simulation.new()
+     chute = options[:chute]
+     mass = options[:mass]
+     if chute
+       return  @sim.execute(rocket_name,engine_code,launch_angle, wind_speed,0.0,chute)
+     end
+     if mass
+       return  @sim.execute(rocket_name,engine_code,launch_angle, wind_speed,mass)
+     end
      @sim.execute(rocket_name,engine_code,launch_angle, wind_speed)
 
     end
